@@ -1,1 +1,15 @@
 flowbite-react
+
+api's:
+
+get test
+http://localhost:3000/api/user/test
+
+post signup
+http://localhost:3000/api/auth/signup
+{
+  "username":"a",
+  "email":"a@gmail.com",
+  "password":"a"
+}
+
