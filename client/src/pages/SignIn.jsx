@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
@@ -13,17 +14,29 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!formData.email || !formData.password) {
       return setErrorMessage("Please fill out all fields.");
     }
     try {
+      setLoading(true);
+      setErrorMessage(null);
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-    } catch (error) {}
+      if (data.success === false) {
+        return setErrorMessage(data.message);
+      }
+      setLoading(false);
+      if (res.ok) {
+        navigate("/");
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
+      setLoading(false);
+    }
   };
   return (
     <div className="min-h-screen mt-20">
@@ -34,7 +47,7 @@ const SignIn = () => {
             <span className="px-2 py-1 bg-gradient-to-r from-orange-500 via-yellow-500 to-green-500 rounded-lg text-white">Chandu's</span>
             Blog
           </Link>
-          <p className="text-sm mt-5">This is a demo project. You can sign up with your email and password or with Google.</p>
+          <p className="text-sm mt-5">This is a demo project. You can signIn with your email and password or with Google.</p>
         </div>
         {/* right */}
 
@@ -60,7 +73,7 @@ const SignIn = () => {
             </Button>
           </form>
           <div className="flex gap-2 text-sm mt-5">
-            <span>Have an account?</span>
+            <span>Dont have an account?</span>
             <Link to="/sign-up" className="text-blue-500">
               Sign up
             </Link>
