@@ -7,6 +7,7 @@ import SignUp from "../src/pages/SignUp";
 import Dashboard from "../src/pages/Dashboard";
 import Projects from "../src/pages/Projects";
 import Header from "../src/components/Header";
+import Footer from "../src/components/Footer";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/projects" element={<Projects />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

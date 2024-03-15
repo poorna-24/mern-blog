@@ -31,7 +31,7 @@ const Signup = () => {
         {/* left */}
         <div className="flex-1">
           <Link to="/" className="font-bold dark:text-white text-4xl">
-            <span className="px-2 py-1 bg-gradient-to-r from-orange-500 via-yellow-500 to-green-500 rounded-lg text-white">Sahand's</span>
+            <span className="px-2 py-1 bg-gradient-to-r from-orange-500 via-yellow-500 to-green-500 rounded-lg text-white">chandu's</span>
             Blog
           </Link>
           <p className="text-sm mt-5">This is a demo project. You can sign up with your email and password or with Google.</p>
