@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleTheme } from "../redux/theme/themeSlice";
+import { toggleTheme } from "../redux/theme/themeSlice.js";
 
 const Header = () => {
   const path = useLocation().pathname;
