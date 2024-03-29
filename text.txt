@@ -21,3 +21,16 @@ http://localhost:3000/api/auth/signin
   "email":"1@gmail.com",
   "password":"1"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+4:23:06
