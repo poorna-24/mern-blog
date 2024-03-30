@@ -22,7 +22,13 @@ http://localhost:3000/api/auth/signin
   "password":"1"
 }
 
-
+put username update
+http://localhost:3000/api/auth/signup
+{
+  "username":"a",
+  "email":"a@gmail.com",
+  "password":"a"
+}
 
 
 
