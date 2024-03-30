@@ -1,9 +1,9 @@
-import { errorHandler } from "../utils/error.js";
-import User from "./../models/user.model.js";
 import bcryptjs from "bcryptjs";
+import { errorHandler } from "../utils/error.js";
+import User from "../models/user.model.js";
 
 export const test = (req, res) => {
-  res.status(200).json({ message: "api test is working" });
+  res.json({ message: "API is working!" });
 };
 
 export const updateUser = async (req, res, next) => {
@@ -57,6 +57,14 @@ export const deleteUser = async (req, res, next) => {
   try {
     await User.findByIdAndDelete(req.params.userId);
     res.status(200).json("User has been deleted");
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const signout = (req, res, next) => {
+  try {
+    res.clearCookie("access_token").status(200).json("User has been signed out");
   } catch (error) {
     next(error);
   }
